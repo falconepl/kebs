@@ -20,9 +20,8 @@ lazy val commonMacroSettings = baseSettings ++ Seq(
 )
 
 lazy val metaSettings = baseSettings ++ Seq(
-  addCompilerPlugin("org.scalameta" % "paradise" % "3.0.0-M10" cross CrossVersion.full),
-  scalacOptions += "-Xplugin-require:macroparadise",
-  scalacOptions in (Compile, console) ~= (_ filterNot (_ contains "paradise"))
+  addCompilerPlugin("org.scalameta"           % "paradise"   % "3.0.0-M10" cross CrossVersion.full),
+  libraryDependencies ++= Seq("org.scalameta" %% "scalameta" % "1.8.0" % Provided, scalaTest % "test")
 )
 
 lazy val publishToNexus = publishTo := {
